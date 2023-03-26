@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState, useContext } from "react";
 import {
   View,
   StyleSheet,
@@ -7,13 +7,15 @@ import {
   Pressable,
   Image,
 } from "react-native";
+import AuthContext from "../store/auth-context";
 import { Input } from "native-base";
 
-const LoginScreen = () => {
+const LoginScreen = ({navigator}) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const authCtx = useContext(AuthContext);
   const handleLogin = () => {
-    // Your login logic here
+    authCtx.login("token")
   };
   return (
     <SafeAreaView style={styles.container}>
@@ -39,7 +41,7 @@ const LoginScreen = () => {
         />
         <Text style={styles.forgot}>Forgot Password?</Text>
         <Pressable style={styles.btnContainer} onPress={handleLogin}>
-          <Text style={styles.button}>Login</Text>
+          <Text  style={styles.button}>Login</Text>
         </Pressable>
         <Text
           style={{

@@ -133,7 +133,10 @@ const HomeScreen = () => {
             <View
               style={{ flexDirection: "row", alignItems: "center", gap: 10 }}
             >
-              <Image source={require("../assets/favicon.png")} />
+              <Image
+                style={{ height: 40, width: 40 }}
+                source={require("../assets/iot.png")}
+              />
               <View>
                 <Text style={{ color: "#fff" }}>Iot Workshop</Text>
                 <Text style={{ color: "#C4C4C4" }}>02 Mar 2022</Text>
@@ -162,7 +165,10 @@ const HomeScreen = () => {
             <View
               style={{ flexDirection: "row", alignItems: "center", gap: 10 }}
             >
-              <Image source={require("../assets/favicon.png")} />
+              <Image
+                style={{ height: 40, width: 40 }}
+                source={require("../assets/design.png")}
+              />
               <View>
                 <Text style={{ color: "#fff" }}>Iot Workshop</Text>
                 <Text style={{ color: "#C4C4C4" }}>02 Mar 2022</Text>
@@ -191,7 +197,10 @@ const HomeScreen = () => {
             <View
               style={{ flexDirection: "row", alignItems: "center", gap: 10 }}
             >
-              <Image source={require("../assets/favicon.png")} />
+              <Image
+                style={{ height: 40, width: 40 }}
+                source={require("../assets/library.png")}
+              />
               <View>
                 <Text style={{ color: "#fff" }}>Iot Workshop</Text>
                 <Text style={{ color: "#C4C4C4" }}>02 Mar 2022</Text>

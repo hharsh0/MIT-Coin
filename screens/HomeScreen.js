@@ -68,7 +68,7 @@ const HomeScreen = () => {
             <View
               style={{
                 padding: 15,
-                backgroundColor: "#151321",
+                backgroundColor: "#1A4166",
                 borderRadius: 15,
               }}
             >
@@ -84,7 +84,7 @@ const HomeScreen = () => {
             <View
               style={{
                 padding: 15,
-                backgroundColor: "#151321",
+                backgroundColor: "#362F63",
                 borderRadius: 15,
               }}
             >

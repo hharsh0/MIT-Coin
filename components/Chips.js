@@ -1,10 +1,9 @@
 import { StyleSheet, Text, View } from "react-native";
-import React from "react";
 
-const Chips = ({ children }) => {
+const Chips = ({ children, filled }) => {
   return (
-    <View style={styles.container}>
-      <Text style={styles.text}>{children}</Text>
+    <View style={filled ? styles.containerFilled : styles.container}>
+      <Text style={filled ? styles.textFilled: styles.text}>{children}</Text>
     </View>
   );
 };
@@ -17,15 +16,18 @@ const styles = StyleSheet.create({
     borderColor: "#fff",
     borderRadius: 1000,
     padding: 10,
+    marginHorizontal: 5,
   },
   containerFilled: {
-    borderWidth: 1,
-    borderColor: "#fff",
     borderRadius: 1000,
     padding: 10,
-    marginTop: 10,
+    marginHorizontal: 5,
+    backgroundColor: "#fff",
   },
   text: {
     color: "#fff",
+  },
+  textFilled: {
+    color: "#212230",
   },
 });

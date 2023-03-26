@@ -12,18 +12,21 @@ const ClubScreen = () => {
           Be an active part of various student clubs in MIT
         </Text>
       </View>
-      <View
+      <ScrollView
+        horizontal={true}
+        showsHorizontalScrollIndicator={false}
         style={{
           flexDirection: "row",
           marginVertical: 30,
           gap: 15,
           paddingHorizontal: 10,
+          height: 50,
         }}
       >
-        <Chips>School of Engineering</Chips>
-        <Chips>School of Engineering</Chips>
-        <Chips>School of Engineering</Chips>
-      </View>
+        <Chips filled={true}>School of Engineering</Chips>
+        <Chips>School of Design</Chips>
+        <Chips>School of Managemtn</Chips>
+      </ScrollView>
       <View
         style={{
           flexDirection: "row",
@@ -35,7 +38,7 @@ const ClubScreen = () => {
         <Text style={styles.headerB}>MIT School of Engineering</Text>
         <Text style={{ color: "#fff" }}>{"(11)"}</Text>
       </View>
-      <ScrollView style={{marginTop: 5}}>
+      <ScrollView style={{ marginTop: 5 }}>
         <ClubCard
           title="Robotics Club"
           info="Department of E&TC"

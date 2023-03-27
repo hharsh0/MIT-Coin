@@ -30,6 +30,8 @@ const LoginScreen = ({navigator}) => {
           value={email}
           onChangeText={setEmail}
           variant="underlined"
+          keyboardType="email-address"
+          autoCapitalize="none"
         />
         <Input
           style={styles.input}
@@ -41,7 +43,7 @@ const LoginScreen = ({navigator}) => {
         />
         <Text style={styles.forgot}>Forgot Password?</Text>
         <Pressable style={styles.btnContainer} onPress={handleLogin}>
-          <Text  style={styles.button}>Login</Text>
+          <Text style={styles.button}>Login</Text>
         </Pressable>
         <Text
           style={{

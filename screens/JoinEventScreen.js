@@ -1,17 +1,19 @@
 import { StyleSheet, Text, View, SafeAreaView, Image,Pressable } from 'react-native'
-import React from 'react'
+import React, { useContext } from 'react'
+import AuthContext from '../store/auth-context';
 import { Divider } from 'native-base'
 import { AntDesign } from "@expo/vector-icons";
 
-const JoinEvent = () => {
+const JoinEvent = ({ navigation }) => {
+  const authCtx = useContext(AuthContext);
   return (
     <SafeAreaView style={styles.container}>
       {/* Workshop details */}
       <View style={{ flex: 1 }}>
         <View style={styles.box}>
           <Image
-            style={{ height: 25, width: 25, marginVertical: 10 }}
-            source={require("../assets/favicon.png")}
+            style={{ height: 40, width: 40, marginVertical: 10 }}
+            source={require("../assets/iot.png")}
           />
           <Text style={styles.header}>AI/ML workshop</Text>
           <View
@@ -56,14 +58,17 @@ const JoinEvent = () => {
             <Text
               style={{ color: "#FFCD4D", fontWeight: "bold", fontSize: 20 }}
             >
-              500 Coins
+              {authCtx.coins} Coins
             </Text>
           </View>
         </View>
       </View>
 
       {/* Pay button */}
-      <Pressable style={styles.btn}>
+      <Pressable onPress={() => {
+        navigation.navigate('Success');
+        authCtx.setCoins(10)
+      }} style={styles.btn}>
         <Text style={{ fontWeight: "bold", fontSize: 15 }}>Pay 10 Coins</Text>
       </Pressable>
     </SafeAreaView>

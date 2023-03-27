@@ -1,8 +1,10 @@
 import { StyleSheet, Text, View, SafeAreaView, Image } from "react-native";
-import React from "react";
+import React, { useContext } from "react";
+import AuthContext from "../store/auth-context";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 
 const ProfileScreen = () => {
+  const authCtx = useContext(AuthContext);
   return (
     <SafeAreaView style={styles.container}>
       {/* profile */}
@@ -34,7 +36,7 @@ const ProfileScreen = () => {
               source={require("../assets/logobox.png")}
             />
             <Text style={{ color: "#FFCD4D", fontWeight: "bold" }}>
-              500 Coins
+              {authCtx.coins} Coins
             </Text>
           </View>
         </View>

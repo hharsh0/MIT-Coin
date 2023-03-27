@@ -1,7 +1,7 @@
 import { StyleSheet, Text, View, SafeAreaView,Image, Pressable } from 'react-native'
 import React from 'react'
 
-const SuccessScreen = () => {
+const SuccessScreen = ({navigation}) => {
     return (
       <SafeAreaView style={styles.container}>
         <View
@@ -14,9 +14,9 @@ const SuccessScreen = () => {
           <Text style={styles.header}>Transaction Successful!</Text>
         </View>
         <Text style={{color: '#fff', fontWeight: 'bold', marginVertical: 10}}>You've Earned a reward</Text>
-          <Pressable style={styles.btn}>
+          <Pressable onPress={()=>navigation.navigate("Reward")} style={styles.btn}>
             <Text style={{ fontWeight: "bold", fontSize: 15 }}>
-              Pay 10 Coins
+              Claim Reward
             </Text>
           </Pressable>
       </SafeAreaView>

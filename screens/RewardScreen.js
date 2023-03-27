@@ -8,7 +8,7 @@ import {
 } from "react-native";
 import React from "react";
 
-const SuccessScreen = () => {
+const SuccessScreen = ({navigation}) => {
   return (
     <SafeAreaView style={styles.container}>
       <View style={{ justifyContent: "center", alignItems: "center", flex: 1 }}>
@@ -19,7 +19,7 @@ const SuccessScreen = () => {
         <Text style={{ color: "#F3AF00", fontWeight: 'bold', fontSize: 20, marginBottom: 20 }}>Congratulations!</Text>
         <Text style={styles.header}>You've Earned a reward</Text>
       </View>
-      <Pressable style={styles.btn}>
+      <Pressable onPress={()=>navigation.navigate("Start")} style={styles.btn}>
         <Text style={{ fontWeight: "bold", fontSize: 15, color: "#fff" }}>
           Back Home
         </Text>

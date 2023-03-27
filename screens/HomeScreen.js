@@ -1,8 +1,10 @@
-import { StyleSheet, Text, View, SafeAreaView, Image,ScrollView } from "react-native";
-import React from "react";
+import { StyleSheet, Text, View, SafeAreaView, Image,ScrollView, Pressable } from "react-native";
+import React, {useContext} from "react";
 import { Divider } from "native-base";
+import AuthContext from "../store/auth-context";
 
-const HomeScreen = () => {
+const HomeScreen = ({ navigation }) => {
+  const authCtx = useContext(AuthContext);
   return (
     <SafeAreaView style={styles.container}>
       <ScrollView style={{ flex: 1 }}>
@@ -10,8 +12,8 @@ const HomeScreen = () => {
         <View style={styles.box1}>
           <View>
             <Text style={styles.balance}>Your Balance</Text>
-            <Text style={styles.coin}>500 MIT Coins</Text>
-            <Text style={styles.balance}>~500 INR</Text>
+            <Text style={styles.coin}>{authCtx.coins} MIT Coins</Text>
+            <Text style={styles.balance}>~{authCtx.coins} INR</Text>
           </View>
           <Image source={require("../assets/logobox.png")} style={styles.img} />
         </View>
@@ -65,7 +67,9 @@ const HomeScreen = () => {
           <View
             style={{ flexDirection: "row", gap: 10, paddingHorizontal: 10 }}
           >
-            <View
+            {/* AI//ML Workshop */}
+            <Pressable
+              onPress={() => navigation.navigate("EventDetail")}
               style={{
                 padding: 15,
                 backgroundColor: "#1A4166",
@@ -80,8 +84,10 @@ const HomeScreen = () => {
               </Text>
               <Text style={{ color: "#fff" }}>Date</Text>
               <Text style={{ color: "#fff" }}>01/01/2023</Text>
-            </View>
-            <View
+            </Pressable>
+            {/* UDX workshop */}
+            <Pressable
+              onPress={() => navigation.navigate("EventDetail")}
               style={{
                 padding: 15,
                 backgroundColor: "#362F63",
@@ -96,7 +102,7 @@ const HomeScreen = () => {
               </Text>
               <Text style={{ color: "#fff" }}>Date</Text>
               <Text style={{ color: "#fff" }}>01/01/2023</Text>
-            </View>
+            </Pressable>
           </View>
           {/* Recent Transactions */}
           <View

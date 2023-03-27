@@ -7,7 +7,7 @@ import RewardScreen from "./screens/RewardScreen";
 import ProfileScreen from "./screens/ProfileScreen";
 import ClubScreen from "./screens/ClubScreen";
 import EventDetailScreen from "./screens/EventDetailScreen";
-import { NativeBaseProvider, Box, Input } from "native-base";
+import { NativeBaseProvider } from "native-base";
 import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { useContext } from "react";

@@ -55,7 +55,7 @@ const HomeScreen = ({ navigation }) => {
             }}
           >
             <Text style={{ fontWeight: "bold", color: "#fff", fontSize: 20 }}>
-              Enrolled Events
+              Enroll Events
             </Text>
             <Text
               style={{ fontWeight: "bold", color: "#2C9AFF", fontSize: 20 }}

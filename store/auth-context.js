@@ -1,4 +1,4 @@
-import React,{useState} from "react";
+import React,{useState, useEffect} from "react";
 
 const AuthContext = React.createContext({
   token: '',
@@ -21,6 +21,29 @@ export const AuthContextProvider = (props) => {
     const logoutHandler = () => {
         setToken(null);
     }
+
+    // useEffect(() => {
+    //   const coinsDocRef = projectFirestore
+    //     .collection("coins")
+    //     .doc("YT7aioKefbXJmltNPUTg");
+    //   coinsDocRef.get().then((doc) => {
+    //     if (doc.exists) {
+    //       setCoins(doc.data().coins);
+    //     } else {
+    //       console.log("No such document!");
+    //     }
+    //   });
+    // }, []);
+
+    // const coinHandler = (coin) => {
+    //   const coinsDocRef = projectFirestore
+    //     .collection("coins")
+    //     .doc("YT7aioKefbXJmltNPUTg");
+    //   coinsDocRef.update({ coins: coins - coin }).then(() => {
+    //     setCoins(coins - coin);
+    //   });
+    // };
+
   const coinHandler = (coin) => {
     setCoins(coins - coin)
   }

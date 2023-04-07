@@ -9,6 +9,7 @@ import {
 } from "react-native";
 import AuthContext from "../store/auth-context";
 import { Input } from "native-base";
+// import { projectAuth } from "../firebase/firebase";
 
 const LoginScreen = ({navigator}) => {
   const [email, setEmail] = useState("");
@@ -16,6 +17,20 @@ const LoginScreen = ({navigator}) => {
   const authCtx = useContext(AuthContext);
   const handleLogin = () => {
     authCtx.login("token")
+    // projectAuth
+    //   .signInWithEmailAndPassword(email, password)
+    //   .then((userCredential) => {
+    //     // Signed in
+    //     const user = userCredential.user;
+    //     console.log(user);
+    //     // Call the login function from auth context
+    //     authCtx.login(user.accessToken);
+    //   })
+    //   .catch((error) => {
+    //     const errorCode = error.code;
+    //     const errorMessage = error.message;
+    //     console.log(errorMessage);
+    //   });
   };
   return (
     <SafeAreaView style={styles.container}>

@@ -1,4 +1,4 @@
-import { useState, useContext } from "react";
+import { useState, useContext, useEffect } from "react";
 import {
   View,
   StyleSheet,
@@ -9,29 +9,23 @@ import {
 } from "react-native";
 import AuthContext from "../store/auth-context";
 import { Input } from "native-base";
-// import { projectAuth } from "../firebase/firebase";
 
 const LoginScreen = ({navigator}) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [error, setError] = useState(null);
   const authCtx = useContext(AuthContext);
+
   const handleLogin = () => {
-    authCtx.login("token")
-    // projectAuth
-    //   .signInWithEmailAndPassword(email, password)
-    //   .then((userCredential) => {
-    //     // Signed in
-    //     const user = userCredential.user;
-    //     console.log(user);
-    //     // Call the login function from auth context
-    //     authCtx.login(user.accessToken);
-    //   })
-    //   .catch((error) => {
-    //     const errorCode = error.code;
-    //     const errorMessage = error.message;
-    //     console.log(errorMessage);
-    //   });
+    authCtx.login(email,password)
   };
+
+   useEffect(() => {
+     if (authCtx.error) {
+       setError(authCtx.error);
+     }
+   }, [authCtx.error]);
+
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.innercontainer}>
@@ -56,6 +50,7 @@ const LoginScreen = ({navigator}) => {
           variant="underlined"
           secureTextEntry
         />
+        <Text style={styles.error}>{error}</Text>
         <Text style={styles.forgot}>Forgot Password?</Text>
         <Pressable style={styles.btnContainer} onPress={handleLogin}>
           <Text style={styles.button}>Login</Text>
@@ -149,5 +144,9 @@ const styles = StyleSheet.create({
   img: {
     height: 30,
     width: 30,
+  },
+  error: {
+    color: "#ED2939",
+    marginVertical: 10,
   },
 });

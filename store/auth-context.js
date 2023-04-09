@@ -1,6 +1,8 @@
 import React, { useState, useEffect, createContext } from "react";
-import { projectFirestore } from "../firebase/firebase";
+import { projectFirestore, projectAuth } from "../firebase/firebase";
 import { doc, getDoc, updateDoc } from "firebase/firestore";
+import { signInWithEmailAndPassword } from "firebase/auth";
+
 
 const AuthContext = createContext({
   token: "",
@@ -9,15 +11,32 @@ const AuthContext = createContext({
   logout: () => {},
   coins: "",
   setCoins: () => {},
+  error: "",
 });
 
 export const AuthContextProvider = (props) => {
   const [token, setToken] = useState("");
   const [coins, setCoins] = useState("2000");
+  const [error, setError] = useState("");
   const userIsLoggedIn = !!token;
 
-  const loginHandler = (token) => {
-    setToken(token);
+  // const loginHandler = (token) => {
+  //   setToken(token);
+  // };
+
+  const loginHandler = (email, password) => {
+    signInWithEmailAndPassword(projectAuth, email, password)
+      .then((userCredential) => {
+        // Signed in
+        const user = userCredential.user;
+        setToken(user.accessToken);
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        console.log("Error:", errorCode, errorMessage);
+        setError(errorMessage);
+      });
   };
 
   const logoutHandler = () => {
@@ -28,7 +47,6 @@ export const AuthContextProvider = (props) => {
     const coinsDocRef = doc(projectFirestore, "coins", "YT7aioKefbXJmltNPUTg");
     getDoc(coinsDocRef).then((doc) => {
       if (doc.exists()) {
-        console.warn(doc.data().coin);
         setCoins(doc.data().coin);
       } else {
         console.log("No such document!");
@@ -50,6 +68,7 @@ export const AuthContextProvider = (props) => {
     logout: logoutHandler,
     coins: coins,
     setCoins: coinHandler,
+    error: error,
   };
 
   return (
